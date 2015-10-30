@@ -2,9 +2,15 @@
 
 require 'erb'
 
+if ARGV.length != 4 || ARGV[0] == '-h' || ARGV[0] == '--h'
+  puts "Usage:"
+  puts "./ovpn-makr.rb ovpn_conf ca_cert crt_cert key_cert > user.ovpn"
+  exit 1
+end
+
 def open_file(file)
   begin
-    file_contents = File.read()
+    file_contents = File.read(file)
   rescue
     raise "We couldn't open file"
   end
@@ -16,10 +22,10 @@ end
 ovpn_erb = ERB.new(open_file("ovpn.erb"))
 
 # Ready the inputs!
-ovpn_conf = open_file()
-ca_cert   = open_file()
-crt_cert  = open_file()
-key_cert  = open_file()
+ovpn_conf = open_file(ARGV[0])
+ca_cert   = open_file(ARGV[1])
+crt_cert  = open_file(ARGV[2])
+key_cert  = open_file(ARGV[3])
 
 # Fire!
 puts ovpn_erb.results
