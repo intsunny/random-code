@@ -15,7 +15,7 @@ def open_file(file)
     raise "We couldn't open file"
   end
 
-  return file
+  return file_contents
 end
 
 # Commence das ERB!
