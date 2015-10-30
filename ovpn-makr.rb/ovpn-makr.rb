@@ -28,4 +28,4 @@ crt_cert  = open_file(ARGV[2])
 key_cert  = open_file(ARGV[3])
 
 # Fire!
-puts ovpn_erb.results
+puts ovpn_erb.result
