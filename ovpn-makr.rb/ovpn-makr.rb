@@ -19,7 +19,7 @@ def open_file(file)
 end
 
 # Commence das ERB!
-ovpn_erb = ERB.new(open_file("ovpn.erb"))
+ovpn_erb = ERB.new(open_file("ovpn.erb"), nil, '>')
 
 # Ready the inputs!
 ovpn_conf = open_file(ARGV[0])
