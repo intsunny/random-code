@@ -18,8 +18,19 @@ def open_file(file)
   return file_contents
 end
 
+ovpn_layout = "<%= ovpn_conf %>
+<ca>
+<%= ca_cert %>
+</ca>
+<cert>
+<%= crt_cert %>
+</cert>
+<key>
+<%= key_cert %>
+</key>"
+
 # Commence das ERB!
-ovpn_erb = ERB.new(open_file("ovpn.erb"), nil, '>')
+ovpn_erb = ERB.new(ovpn_layout, nil, '>')
 
 # Ready the inputs!
 ovpn_conf = open_file(ARGV[0])
